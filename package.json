@@ -1,6 +1,6 @@
 {
   "name": "@basementuniverse/stopwatch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A somewhat accurate timer for use in browser games.",
   "main": "build/index.js",
   "scripts": {

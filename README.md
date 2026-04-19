@@ -11,7 +11,7 @@ npm install @basementuniverse/stopwatch
 ## How to use
 
 ```ts
-import { Stopwatch } from '@basementuniverse/stopwatch';
+import Stopwatch from '@basementuniverse/stopwatch';
 
 const stopwatch = new Stopwatch({
   unit: 's',

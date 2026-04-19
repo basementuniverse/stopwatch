@@ -5,7 +5,7 @@ Browser stopwatch for game loops. Call `update()` each frame.
 ## Minimal usage
 
 ```ts
-import { Stopwatch } from '@basementuniverse/stopwatch';
+import Stopwatch from '@basementuniverse/stopwatch';
 
 const sw = new Stopwatch({ unit: 's', direction: 'forward', max: Infinity });
 

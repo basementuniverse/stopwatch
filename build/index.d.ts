@@ -53,7 +53,7 @@ export type StopwatchOptions = {
      * Callback function that is called when the stopwatch reaches a milestone
      * value.
      *
-     * The milestone parameter is the index ofconst { Stopwatch } = the milestone in the milestones
+     * The milestone parameter is the index of the milestone in the milestones
      * array that was reached.
      */
     onMilestone?: (milestone: number) => void;
@@ -72,7 +72,7 @@ export type StopwatchStopOptions = {
      */
     resetPausedDuration: boolean;
 };
-export declare class Stopwatch {
+export default class Stopwatch {
     private static readonly DEFAULT_OPTIONS;
     private static readonly DEFAULT_STOP_OPTIONS;
     options: StopwatchOptions;
