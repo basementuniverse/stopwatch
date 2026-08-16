@@ -8,6 +8,14 @@ description: >
 
 Use this skill when working with `@basementuniverse/stopwatch`.
 
+The package publishes a UMD build and uses `export =`, so the module *is* the
+main class. In bundlers such as webpack or Vite, use a default import from
+`@basementuniverse/stopwatch`; with CommonJS, `require()` returns the class
+directly (there is no `.default`). Nested types and enums are reachable through
+the merged namespace on that same name. When loading the build with a browser
+`<script>` tag, the class is available as the `BasementUniverseStopwatch` global.
+The package does not publish a separate native ESM build.
+
 ## Overview
 
 The `@basementuniverse/stopwatch` library provides a high-precision timer designed for browser game loops. It uses `performance.now()` for accurate timing and supports both count-up (forward) and count-down (backward) modes with configurable rates, lifecycle callbacks, and milestone tracking.

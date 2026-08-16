@@ -8,6 +8,15 @@ A somewhat accurate timer for use in browser games.
 npm install @basementuniverse/stopwatch
 ```
 
+For direct browser usage, include the UMD build with a script tag:
+
+```html
+<script src="build/index.js"></script>
+```
+
+The build exposes the package's main class as the `BasementUniverseStopwatch` browser
+global. It does not add each export directly to `window`.
+
 ## How to use
 
 ```ts
@@ -128,6 +137,20 @@ type StopwatchOptions = {
    */
   onMilestone?: (milestone: number) => void;
 };
+```
+
+When using the library directly from a browser script, use the
+`BasementUniverseStopwatch` global:
+
+```html
+<script src="build/index.js"></script>
+<script>
+  const stopwatch = new BasementUniverseStopwatch({ unit: 's' });
+
+  stopwatch.start();
+  stopwatch.update();
+  console.log(stopwatch.time);
+</script>
 ```
 
 When stopping the stopwatch, you can specify options to control whether to reset the time and paused duration:

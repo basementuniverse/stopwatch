@@ -4,7 +4,8 @@
   "description": "A somewhat accurate timer for use in browser games.",
   "main": "build/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
     "watch": "webpack --watch"
   },
   "author": "gordon",

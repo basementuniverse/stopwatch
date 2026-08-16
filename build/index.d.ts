@@ -1,81 +1,7 @@
-export type StopwatchOptions = {
-    /**
-     * The unit of time used by the stopwatch. This determines how the time values
-     * are interpreted and displayed. The default unit is 'milliseconds'.
-     */
-    unit: 'ms' | 's';
-    /**
-     * The rate at which the stopwatch progresses. A rate of 1 means real-time,
-     * 2 means twice as fast, and 0.5 means half as fast.
-     */
-    rate: number;
-    /**
-     * The direction in which the stopwatch counts.
-     * 'forward' means it counts up, 'backward' means it counts down.
-     */
-    direction: 'forward' | 'backward';
-    /**
-     * The maximum value the stopwatch can reach. Must be finite when counting
-     * backward.
-     */
-    max: number;
-    /**
-     * An array of milestone values. When the stopwatch reaches a milestone, it
-     * can trigger a callback or perform an action.
-     */
-    milestones?: number[];
-    /**
-     * Callback function that is called when the stopwatch is started.
-     */
-    onStart: () => void;
-    /**
-     * Callback function that is called when the stopwatch is stopped.
-     */
-    onStop: () => void;
-    /**
-     * Callback function that is called when the stopwatch is paused.
-     */
-    onPause: () => void;
-    /**
-     * Callback function that is called when the stopwatch is resumed.
-     */
-    onResume: () => void;
-    /**
-     * Callback function that is called when the stopwatch finishes.
-     *
-     * When counting forward, the stopwatch finishes when it reaches the maximum
-     * value. When counting backward, the stopwatch finishes when it reaches zero.
-     *
-     * If counting forward and max is Infinity, the stopwatch will never finish.
-     */
-    onFinish: () => void;
-    /**
-     * Callback function that is called when the stopwatch reaches a milestone
-     * value.
-     *
-     * The milestone parameter is the index of the milestone in the milestones
-     * array that was reached.
-     */
-    onMilestone?: (milestone: number) => void;
-};
-export type StopwatchStopOptions = {
-    /**
-     * Whether to reset the time to 0 when stopping the stopwatch.
-     *
-     * Default is true.
-     */
-    resetTime: boolean;
-    /**
-     * Whether to reset the paused duration to 0 when stopping the stopwatch.
-     *
-     * Default is true.
-     */
-    resetPausedDuration: boolean;
-};
-export default class Stopwatch {
+declare class Stopwatch {
     private static readonly DEFAULT_OPTIONS;
     private static readonly DEFAULT_STOP_OPTIONS;
-    options: StopwatchOptions;
+    options: Stopwatch.StopwatchOptions;
     private _running;
     private _paused;
     private _elapsedTime;
@@ -86,7 +12,7 @@ export default class Stopwatch {
     private _lastObservedTime;
     private _finished;
     private _reachedMilestones;
-    constructor(options?: Partial<StopwatchOptions>);
+    constructor(options?: Partial<Stopwatch.StopwatchOptions>);
     get running(): boolean;
     set running(value: boolean);
     get paused(): boolean;
@@ -150,7 +76,7 @@ export default class Stopwatch {
      * The options parameter allows you to specify whether to reset the time and
      * paused duration when stopping the stopwatch.
      */
-    stop(options?: Partial<StopwatchStopOptions>): void;
+    stop(options?: Partial<Stopwatch.StopwatchStopOptions>): void;
     /**
      * Pauses the stopwatch. If the stopwatch is already paused or not running,
      * this has no effect.
@@ -203,3 +129,80 @@ export default class Stopwatch {
     private toInternalTime;
     private toDisplayTime;
 }
+declare namespace Stopwatch {
+    type StopwatchOptions = {
+        /**
+         * The unit of time used by the stopwatch. This determines how the time values
+         * are interpreted and displayed. The default unit is 'milliseconds'.
+         */
+        unit: 'ms' | 's';
+        /**
+         * The rate at which the stopwatch progresses. A rate of 1 means real-time,
+         * 2 means twice as fast, and 0.5 means half as fast.
+         */
+        rate: number;
+        /**
+         * The direction in which the stopwatch counts.
+         * 'forward' means it counts up, 'backward' means it counts down.
+         */
+        direction: 'forward' | 'backward';
+        /**
+         * The maximum value the stopwatch can reach. Must be finite when counting
+         * backward.
+         */
+        max: number;
+        /**
+         * An array of milestone values. When the stopwatch reaches a milestone, it
+         * can trigger a callback or perform an action.
+         */
+        milestones?: number[];
+        /**
+         * Callback function that is called when the stopwatch is started.
+         */
+        onStart: () => void;
+        /**
+         * Callback function that is called when the stopwatch is stopped.
+         */
+        onStop: () => void;
+        /**
+         * Callback function that is called when the stopwatch is paused.
+         */
+        onPause: () => void;
+        /**
+         * Callback function that is called when the stopwatch is resumed.
+         */
+        onResume: () => void;
+        /**
+         * Callback function that is called when the stopwatch finishes.
+         *
+         * When counting forward, the stopwatch finishes when it reaches the maximum
+         * value. When counting backward, the stopwatch finishes when it reaches zero.
+         *
+         * If counting forward and max is Infinity, the stopwatch will never finish.
+         */
+        onFinish: () => void;
+        /**
+         * Callback function that is called when the stopwatch reaches a milestone
+         * value.
+         *
+         * The milestone parameter is the index of the milestone in the milestones
+         * array that was reached.
+         */
+        onMilestone?: (milestone: number) => void;
+    };
+    type StopwatchStopOptions = {
+        /**
+         * Whether to reset the time to 0 when stopping the stopwatch.
+         *
+         * Default is true.
+         */
+        resetTime: boolean;
+        /**
+         * Whether to reset the paused duration to 0 when stopping the stopwatch.
+         *
+         * Default is true.
+         */
+        resetPausedDuration: boolean;
+    };
+}
+export = Stopwatch;
